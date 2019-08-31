@@ -16,7 +16,9 @@ const hash = (string, max) =>{
   for(let i=0;i<string.length;i++){
     hash += string.charCodeAt(i);
   }
-  return hash % max;  //이게 무슨 의미지? =>주소 반환. 
+  return hash % max;  //이게 무슨 의미지? =>주소 반환.
+  // 이런 식으로 데이타를 저장하면 key에 대한 데이타를 찾을 때 hash()를 한번만 수행하면
+  // array 내에 저장된 index 위치를 찾아낼 수 있기 때문에, 데이타의 저장과 삭제가 매우매우 빠르다
 }
 
 // add, remove, lookup, print
