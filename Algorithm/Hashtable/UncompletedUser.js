@@ -1,3 +1,21 @@
+/*
+- INPUT
+    participant: Array of participants who join in the marathon
+    completion: Array of participants who completed the marathon
+- OUTPUT
+    The name of the participant who couldn't completed the marathon.
+- Restriction
+    1. participant.length - completion.length = 1
+    2. Number of participants : 1 ~ 100,000
+- Example of INPUT & OUTPUT
+    participant	                            completion	                     return
+    [leo, kiki, eden]	                    [eden, kiki]	                 leo
+    [marina, josipa, nikola, vinko, filipa]	[josipa, filipa, marina, nikola] vinko
+    [mislav, stanko, mislav, ana]	        [stanko, ana, mislav]	         mislav
+    
+*/
+
+
 function solution(participant, completion) {
     var answer = '';
     let hashTable = new HashTable();
