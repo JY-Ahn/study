@@ -12,11 +12,6 @@
     But in this code, I used the recursion. 
 */
 
-
-// function getElementsByClassName (className) {
-//   return document.getElementsByClassName(className);
-// };
-
 function getElementsByClassName_recursion(className) {
     // your code here
     let found = [];
