@@ -1,13 +1,13 @@
 const Stack = function() {
-
+    
     var output = Object.create(stackMethods);
     output.storage = {};
     output.count = 0;
   
     return output;
-  };
-  
-  const stackMethods = {
+};
+
+const stackMethods = {
     push: function(value) {
       this.storage[this.count] = value;
       this.count++;
@@ -29,5 +29,5 @@ const Stack = function() {
     show: function() {
       return this.storage;
     }
-  };
+};
   
