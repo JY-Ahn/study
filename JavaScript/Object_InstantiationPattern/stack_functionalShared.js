@@ -1,19 +1,12 @@
 const Stack = function() {
-    // Hey! Rewrite in the new style. Your code will wind up looking very similar,
-    // but try not not reference your old code in writing the new style.
+
     const someInstance = {
       storage: {},
       count: 0
     };
-  
-    // const storage = {};
-    // var count = 0;
+
     extend(someInstance, stackMethods);
-    /**
-     * for (let key in source) {
-     * target[key] = source[key];
-     * }
-     */
+
     return someInstance;
   };
   
