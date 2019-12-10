@@ -10,6 +10,7 @@ function BoilingVerdict(props){
 class Calculator extends React.Component{
     constructor(props){
         super(props);
+        // class 의 메서드들은 this 바인딩이 자동으로 되지 않기 때문에 직접 해줘야 한다.
         this.handleFahrenheitChange = this.handleFahrenheitChange.bind(this);
         this.handleCelsiusChange = this.handleCelsiusChange.bind(this);
         this.state = {
@@ -17,13 +18,17 @@ class Calculator extends React.Component{
             scale : 'c'
         }
     }
+    // 이벤트 핸들러 함수는 클래스 안에 작성한다
     handleCelsiusChange(temperature){
         this.setState({scale: 'c', temperature: temperature});
     }
     handleFahrenheitChange(temperature){
         this.setState({scale: 'f', temperature: temperature});
     }
+
     render(){
+        // 컴포넌트의 스케일과 온도 저장
+        // 비동기로 이루어질 수 있어서 this를 사용하나?
         const scale = this.state.scale;
         const temperature = this.state.temperature;
         const celsius = scale === 'f' ? tryConvert(temperature, toCelsius) : temperature;
@@ -31,14 +36,20 @@ class Calculator extends React.Component{
         return (
             <div>
                 {/* scale, temperature, function */}
+                {/* 
+                onTemperatureChange 는 자식 컴포넌트의 state 를 부모 컴포넌트로 끌어올리기 위해서
+                props로 함수를 전달해주는 행위이다.
+                
+                자식 컴포넌트는 전달 받은 props의 함수를 이용하여 부모 혹은 형제 컴포넌트와 통신한다.
+                 */}
                 <TemperatureInput
                     scale = 'c'
                     temperature = {celsius}
-                    onTemperatureChage = {this.handleCelsiusChange}/>
+                    onTemperatureChange = {this.handleCelsiusChange}/>
                 <TemperatureInput
                     scale = 'f'
                     temperature = {fahrenheit}
-                    onTemperatureChage = {this.handleFahrenheitChange}/>
+                    onTemperatureChange = {this.handleFahrenheitChange}/>
                 <BoilingVerdict
                     celsius = {parseFloat(celsius)}/>
             </div>
@@ -58,7 +69,8 @@ class TemperatureInput extends React.Component{
     }
     handleChange(e){
         // this.setState({ temperature : e.target.value });
-        this.props.onTemperatureChage(e.target.value);
+        // Lifting State Up
+        this.props.onTemperatureChange(e.target.value);
     }
     render(){
         // 데이터를 부모 컴포넌트로 끌어 올리기 위해 수정
