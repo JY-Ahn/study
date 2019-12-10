@@ -16,17 +16,17 @@ function LogoutButton(props){
     )
 }
 function UserGreeting(props){
-    return <h1>Welcome back!</h1>
+    return <h1>Welcome back!</h1>;
 }
 function GuestsGreeting(props){
-    return <h1>Please sign up.</h1>
+    return <h1>Please sign up.</h1>;
 }
 function Greeting(props){
     const isLoggedIn = props.isLoggedIn;
     if(isLoggedIn){
-        return <UserGreeting />
+        return <UserGreeting />;
     }else{
-        return <GuestsGreeting />
+        return <GuestsGreeting />;
     }
 }
 class LoginControl extends React.Component{
